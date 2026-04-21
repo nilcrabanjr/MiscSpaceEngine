@@ -5,6 +5,7 @@
 
 // Game class dependencies
 #include "Scene.h"
+#include "Sprite.h"
 
 class Game 
 {
