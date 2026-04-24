@@ -25,6 +25,10 @@ int Game::getTargetFPS() const {
     return TARGET_FPS;
 }
 
+std::vector<Scene> Game::getSceneCollection() const {
+    return sceneCollection;
+}
+
 // Setters
 void Game::setWindowWidth(int option) {
     WINDOW_WIDTH = option;
@@ -50,8 +54,10 @@ void Game::setTargetFPS(int option) {
     TARGET_FPS = option;
 }
 
+// Main
+
 void Game::windowInit() {
-    Log::warning("Test warning");
+    Log::secret("STAN TWICE");
     SetTraceLogLevel(LOG_ERROR);
     SetConfigFlags(FLAG_WINDOW_UNDECORATED);
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME.c_str());
@@ -75,4 +81,14 @@ int Game::gameLoop() {
     Log::info("Window closed");
     Log::info("Game loop ended");
     return 0;
+}
+
+// Utility
+
+void Game::addSceneToCollection(Scene& option) {
+    sceneCollection.emplace_back(option);
+}
+
+void Game::addSceneCollection(std::vector<Scene> option) {
+    sceneCollection = option;
 }

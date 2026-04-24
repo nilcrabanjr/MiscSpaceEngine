@@ -21,6 +21,7 @@ class Game
 		std::string getWindowName() const;
 		bool getIsFullscreen() const;
 		int getTargetFPS() const;
+		std::vector<Scene> getSceneCollection() const;
 
 		// Setters
 		void setWindowWidth(int);
@@ -34,11 +35,19 @@ class Game
 		void windowInit();
 		int gameLoop();
 
+		// Utility
+		void addSceneToCollection(Scene&);
+		void addSceneCollection(std::vector<Scene>);
+
 	private:
+		// Window info
 		int WINDOW_WIDTH;
 		int WINDOW_HEIGHT;
 		std::pair<int, int> WINDOW_SIZE;
 		std::string WINDOW_NAME;
 		bool IS_FULLSCREEN;
 		int TARGET_FPS;
+
+		// Game collections
+		std::vector<Scene> sceneCollection;
 };
