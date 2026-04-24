@@ -1,12 +1,20 @@
 #include "Sprite.h"
 #include <iostream>
 
+int Sprite::getSpriteID() const {
+	return id;
+}
+
 std::string Sprite::getSpriteName() const {
 	return name;
 }
 
 std::string Sprite::getSpritePath() const {
 	return spritePath;
+}
+
+void Sprite::setSpriteID(int option) {
+	id = option;
 }
 
 void Sprite::setSpriteName(std::string option) {
