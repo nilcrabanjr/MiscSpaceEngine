@@ -2,70 +2,69 @@
 
 // Getters
 int Game::getWindowWidth() const {
-    return WINDOW_WIDTH;
+    return windowWidth;
 }
 
 int Game::getWindowHeight() const {
-    return WINDOW_HEIGHT;
-}
-
-std::pair<int, int> Game::getWindowSize() const {
-    return WINDOW_SIZE;
+    return windowHeight;
 }
 
 std::string Game::getWindowName() const {
-    return WINDOW_NAME;
+    return windowName;
 }
 
 bool Game::getIsFullscreen() const {
-    return IS_FULLSCREEN;
+    return isFullscreen;
 }
 
 int Game::getTargetFPS() const {
-    return TARGET_FPS;
+    return targetFPS;
 }
 
-std::vector<Scene> Game::getSceneCollection() const {
+const std::vector<Scene>& Game::getSceneCollection() const {
     return sceneCollection;
+}
+
+int Game::getActiveSceneIndex() const {
+    return activeSceneIndex;
 }
 
 // Setters
 void Game::setWindowWidth(int option) {
-    WINDOW_WIDTH = option;
+    windowWidth = option;
 }
 
 void Game::setWindowHeight(int option) {
-    WINDOW_HEIGHT = option;
-}
-
-void Game::setWindowSize(std::pair<int, int> option) {
-    WINDOW_SIZE = option;
+    windowHeight = option;
 }
 
 void Game::setWindowName(std::string option) {
-    WINDOW_NAME = option;
+    windowName = option;
 }
 
 void Game::setIsFullscreen(bool option) {
-    IS_FULLSCREEN = option;
+    isFullscreen = option;
 }
 
 void Game::setTargetFPS(int option) {
-    TARGET_FPS = option;
+    targetFPS = option;
+}
+
+void Game::setActiveSceneIndex(int option) {
+    activeSceneIndex = option;
 }
 
 // Main
 
-void Game::windowInit() {
-    Log::secret("STAN TWICE");
+bool Game::windowInit() {
     SetTraceLogLevel(LOG_ERROR);
-    SetConfigFlags(FLAG_WINDOW_UNDECORATED);
-    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME.c_str());
-    if (IS_FULLSCREEN == true) {
+    InitWindow(windowWidth, windowHeight, windowName.c_str());
+    if (isFullscreen == true) {
         ToggleFullscreen();
     }
-    SetTargetFPS(TARGET_FPS);
+    SetTargetFPS(targetFPS);
     Log::info("Window initialised");
+    return true;
 }
 
 int Game::gameLoop() {

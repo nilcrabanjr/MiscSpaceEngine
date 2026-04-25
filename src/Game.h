@@ -14,25 +14,32 @@
 class Game 
 {
 	public:
+		// Default constructor
+		Game() : windowWidth(0), windowHeight(0), windowName(""), isFullscreen(false), targetFPS(0) {}
+
+		// Parameterised constructor
+		Game(int aWindowWidth, int aWindowHeight, std::string aWindowName, bool aIsFullscreen, int aTargetFPS) :
+		windowWidth(aWindowWidth), windowHeight(aWindowHeight), windowName(aWindowName), isFullscreen(aIsFullscreen), targetFPS(aTargetFPS) {}
+
 		// Getters
 		int getWindowWidth() const;
 		int getWindowHeight() const;
-		std::pair<int, int> getWindowSize() const;
 		std::string getWindowName() const;
 		bool getIsFullscreen() const;
 		int getTargetFPS() const;
-		std::vector<Scene> getSceneCollection() const;
+		const std::vector<Scene>& getSceneCollection() const;
+		int getActiveSceneIndex() const;
 
 		// Setters
 		void setWindowWidth(int);
 		void setWindowHeight(int);
-		void setWindowSize(std::pair<int, int>);
 		void setWindowName(std::string);
 		void setIsFullscreen(bool);
 		void setTargetFPS(int);
+		void setActiveSceneIndex(int);
 
 		// Main
-		void windowInit();
+		bool windowInit();
 		int gameLoop();
 
 		// Utility
@@ -41,13 +48,13 @@ class Game
 
 	private:
 		// Window info
-		int WINDOW_WIDTH;
-		int WINDOW_HEIGHT;
-		std::pair<int, int> WINDOW_SIZE;
-		std::string WINDOW_NAME;
-		bool IS_FULLSCREEN;
-		int TARGET_FPS;
+		int windowWidth;
+		int windowHeight;
+		std::string windowName;
+		bool isFullscreen;
+		int targetFPS;
 
-		// Game collections
+		// Scenes
 		std::vector<Scene> sceneCollection;
+		int activeSceneIndex;
 };

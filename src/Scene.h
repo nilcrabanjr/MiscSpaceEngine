@@ -9,8 +9,7 @@ class Scene
 
 		// Parameterised constructor
 		Scene(int aID, std::string aName, int aWidth, int aHeight, std::string aBackground)
-			: id(aID), name(aName), width(aWidth), height(aHeight), background(aBackground) {
-		}
+			: id(aID), name(aName), width(aWidth), height(aHeight), background(aBackground) {}
 
 		// Getters
 		int getSceneID() const;

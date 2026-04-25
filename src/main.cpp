@@ -4,9 +4,8 @@
 int main()
 {
     // Setup
-    Game game; // Creates game object
+    Game game(1000, 500, "MiscSpaceEngine", false, 30); // Creates game object with window width, height, name, fullscreen and fps
     Log::setLogLevel(Log::INFO); // Sets the logging level
-    game.setWindowWidth(1000); game.setWindowHeight(500); // Sets window width and height
-    game.setWindowName("MiscSpaceEngine"); game.setIsFullscreen(false); game.setTargetFPS(30); // Window coptions
+    Log::secret("STAN TWICE"); // For the funnies
     game.windowInit(); game.gameLoop(); // Initialise window and start game loop
 }

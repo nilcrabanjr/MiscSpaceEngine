@@ -7,6 +7,12 @@
 class Object
 {
 	public:
+		// Default constructor
+		Object() : name("") {}
+
+		// Parameterised constructor
+		Object(std::string aName) : name(aName) {}
+
 		// Getters
 		std::string getObjectName() const;
 		std::vector<Sprite> getSpriteCollection() const;
