@@ -24,6 +24,9 @@ class Object
 		// Utility
 		void addSpriteToSpriteCollection(Sprite&);
 
+		// Functionality
+		void update();
+
 	private:
 		std::string name;
 		std::vector<Sprite> spriteCollection;

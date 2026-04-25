@@ -1,42 +1,44 @@
 #include "Scene.h"
 #include <iostream>
 
-int Scene::getSceneID() const {
-	return id;
-}
-
+// Getters
 std::string Scene::getSceneName() const {
 	return name;
-}
-
-int Scene::getSceneWidth() const {
-	return width;
-}
-
-int Scene::getSceneHeight() const {
-	return height;
 }
 
 std::string Scene::getSceneBackground() const {
 	return background;
 }
 
-void Scene::setSceneID(int option) {
-	id = option;
+const std::vector<Object>& Scene::getObjectCollection() const {
+	return objectCollection;
 }
 
+// Setters
 void Scene::setSceneName(std::string option) {
 	name = option;
 }
 
-void Scene::setSceneWidth(int option) {
-	width = option;
-}
-
-void Scene::setSceneHeight(int option) {
-	height = option;
-}
-
 void Scene::setSceneBackground(std::string option) {
 	background = option;
+}
+
+// Utility
+void Scene::addObjectToCollection(Object& option) {
+	objectCollection.emplace_back(option);
+}
+
+void Scene::removeObjectFromCollectionByIndex(int option) {
+	objectCollection.erase(objectCollection.begin() + option);
+}
+
+void Scene::removeObjectFromCollectionFromBack() {
+	objectCollection.pop_back();
+}
+
+// Functionality
+void Scene::update() {
+	for (Object obj : objectCollection) {
+		obj.update();
+	}
 }

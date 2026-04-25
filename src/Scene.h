@@ -1,34 +1,36 @@
 #pragma once
-#include <iostream>
+#include <string>
+#include "Object.h"
 
 class Scene
 {
 	public:
 		// Default constructor
-		Scene() : id(0), name(""), width(0), height(0), background("") {}
+		Scene() : name(""), background("") {}
 
 		// Parameterised constructor
-		Scene(int aID, std::string aName, int aWidth, int aHeight, std::string aBackground)
-			: id(aID), name(aName), width(aWidth), height(aHeight), background(aBackground) {}
+		Scene(std::string aName, std::string aBackground)
+			: name(aName), background(aBackground) {}
 
 		// Getters
-		int getSceneID() const;
 		std::string getSceneName() const;
-		int getSceneWidth() const;
-		int getSceneHeight() const;
 		std::string getSceneBackground() const;
+		const std::vector<Object>& getObjectCollection() const;
 
 		// Setters
-		void setSceneID(int);
 		void setSceneName(std::string);
-		void setSceneWidth(int);
-		void setSceneHeight(int);
 		void setSceneBackground(std::string);
 
+		// Utility
+		void addObjectToCollection(Object&);
+		void removeObjectFromCollectionByIndex(int);
+		void removeObjectFromCollectionFromBack();
+
+		// Functionality
+		void update();
+
 	private:
-		int id;
 		std::string name;
-		int width;
-		int height;
 		std::string background;
+		std::vector<Object> objectCollection;
 };

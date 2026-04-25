@@ -56,5 +56,5 @@ class Game
 
 		// Scenes
 		std::vector<Scene> sceneCollection;
-		int activeSceneIndex;
+		int activeSceneIndex = 0;
 };

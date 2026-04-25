@@ -7,8 +7,7 @@ namespace Log
 		NONE,
 		INFO,
 		WARNING,
-		ERROR,
-		SECRET
+		ERROR
 	};
 	
 	extern LOG_LEVEL logLevel;
@@ -16,6 +15,5 @@ namespace Log
 	void info(std::string msg);
 	void warning(std::string msg);
 	void error(std::string msg);
-	void secret(std::string msg);
 	void setLogLevel(LOG_LEVEL);
 }

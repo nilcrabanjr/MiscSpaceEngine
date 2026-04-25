@@ -75,6 +75,7 @@ int Game::gameLoop() {
         BeginDrawing();
         ClearBackground(BLACK);
         EndDrawing();
+        sceneCollection[activeSceneIndex].update();
     }
     CloseWindow();
     Log::info("Window closed");
