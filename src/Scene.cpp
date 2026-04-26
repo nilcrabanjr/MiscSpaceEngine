@@ -1,4 +1,6 @@
 #include "Scene.h"
+#include "log.h"
+#include "raylib.h"
 #include <iostream>
 
 // Getters
@@ -37,8 +39,28 @@ void Scene::removeObjectFromCollectionFromBack() {
 }
 
 // Functionality
+void Scene::init() {
+	backgroundTexture = LoadTexture(getSceneBackground().c_str());
+
+	if (backgroundTexture.id > 0) {
+		hasBackgroundTexture = true;
+	}
+	else {
+		hasBackgroundTexture = false;
+		if (backgroundTexture.id <= 0) {
+			Log::warning("Failed to load scene background: " + background);
+		}
+	}
+}
+
 void Scene::update() {
-	for (Object obj : objectCollection) {
+	for (Object& obj : objectCollection) {
 		obj.update();
+	}
+}
+
+void Scene::draw() {
+	if (hasBackgroundTexture) {
+		DrawTexture(backgroundTexture, 0, 0, WHITE);
 	}
 }

@@ -1,7 +1,7 @@
 #include "Object.h"
 #include <iostream>
 
-// getters
+// Getters
 std::string Object::getObjectName() const {
 	return name;
 }

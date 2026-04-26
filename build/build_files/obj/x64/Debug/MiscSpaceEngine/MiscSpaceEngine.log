@@ -1,6 +1,5 @@
 ﻿  Game.cpp
-  main.cpp
-  Object.cpp
   Scene.cpp
+  main.cpp
   Generating Code...
   MiscSpaceEngine.vcxproj -> C:\Users\riley\OneDrive\Desktop\Projects\current\MiscSpaceEngine\bin\Debug\MiscSpaceEngine.exe

@@ -11,9 +11,9 @@ int main()
     Log::setLogLevel(Log::INFO);
 
     // Setup of testing scenes and objects
-    Object obj_test1("obj_test1", 0, 0, true); Object obj_test2("obj_test2", 1, 1, false);
+    Object obj_test1("obj_test1", 0, 0, true, false); Object obj_test2("obj_test2", 1, 1, false, false);
 
-    Scene test_scene("test_scene", "resources/Example.png");
+    Scene test_scene("test_scene", "resources/Backgrounds/bg_test.png");
 
     test_scene.addObjectToCollection(obj_test1); test_scene.addObjectToCollection(obj_test2);
 

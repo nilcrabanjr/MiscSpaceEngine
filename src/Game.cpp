@@ -55,27 +55,43 @@ void Game::setActiveSceneIndex(int option) {
 }
 
 // Main
-
 bool Game::windowInit() {
     SetTraceLogLevel(LOG_ERROR);
     InitWindow(windowWidth, windowHeight, windowName.c_str());
+
     if (isFullscreen == true) {
         ToggleFullscreen();
     }
+
     SetTargetFPS(targetFPS);
+
+    if (!sceneCollection.empty()) {
+        sceneCollection[activeSceneIndex].init();
+    }
+    else {
+        Log::warning("No scenes available to initialise");
+    }
+
     Log::info("Window initialised");
     return true;
 }
 
 int Game::gameLoop() {
     Log::info("Game loop started");
+
     while (!WindowShouldClose())
     {
+        if (!sceneCollection.empty()) {
+            sceneCollection[activeSceneIndex].update();
+        }
 
         BeginDrawing();
         ClearBackground(BLACK);
+
+        if (!sceneCollection.empty()) {
+            sceneCollection[activeSceneIndex].draw();
+        }
         EndDrawing();
-        sceneCollection[activeSceneIndex].update();
     }
     CloseWindow();
     Log::info("Window closed");
@@ -84,7 +100,6 @@ int Game::gameLoop() {
 }
 
 // Utility
-
 void Game::addSceneToCollection(Scene& option) {
     sceneCollection.emplace_back(option);
 }
