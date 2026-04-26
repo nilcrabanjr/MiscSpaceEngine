@@ -93,6 +93,9 @@ int Game::gameLoop() {
         }
         EndDrawing();
     }
+    if (!sceneCollection.empty()) {
+        sceneCollection[activeSceneIndex].unload();
+    }
     CloseWindow();
     Log::info("Window closed");
     Log::info("Game loop ended");

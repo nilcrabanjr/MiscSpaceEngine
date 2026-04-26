@@ -64,3 +64,11 @@ void Scene::draw() {
 		DrawTexture(backgroundTexture, 0, 0, WHITE);
 	}
 }
+
+void Scene::unload() {
+	if (hasBackgroundTexture) {
+		UnloadTexture(backgroundTexture);
+		hasBackgroundTexture = false;
+		Log::info("Scene background unloaded");
+	}
+}

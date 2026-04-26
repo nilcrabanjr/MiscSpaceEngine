@@ -33,6 +33,7 @@ public:
 	void init();
 	void update();
 	void draw();
+	void unload();
 
 private:
 	std::string name;
